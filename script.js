@@ -12,7 +12,11 @@ function toggleVideoStatus() {
 
 //update play/pause icon
 function updatePlayIcon() {
-  return true;
+ if (video.paused) {
+   play.innerHTML = '<i class="fa fa-play fa-2x"></i>';
+ } else {
+   play.innerHTML = '<i class="fa fa-pause fa-2x"></i>'
+ }
 }
 
 //update progress & timestamp
@@ -26,15 +30,17 @@ function setVideoProgress() {
 }
 
 function stopVideo(){
-  return true;
+  video.currentTime = 0;
+  video.pause();
 }
 
 //Event Listeners
 video.addEventListener('click', toggleVideoStatus);
+play.addEventListener('click', toggleVideoStatus);
+
 video.addEventListener('pause', updatePlayIcon);
 video.addEventListener('play', updatePlayIcon);
 video.addEventListener('timeupdate', updateProgress);
 
-play.addEventListener('click', toggleVideoStatus);
 stop.addEventListener('click', stopVideo);
 progress.addEventListener('change', setVideoProgress)

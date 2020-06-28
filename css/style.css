@@ -21,7 +21,8 @@ h1{
 .screen{
   cursor: pointer;
   width: 50%;
-  border-radius: 30px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .controls{
