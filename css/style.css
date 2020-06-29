@@ -38,6 +38,7 @@ h1{
   border: 0;
   background: transparent;
   cursor: pointer;
+  color: #fff;
 }
 
 .controls .fa-play{
@@ -62,15 +63,43 @@ h1{
   outline: 0;
 }
 
-#fullScreen{
+.controls-two{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 10px;
+}
+
+.fullScreen{
   color: white;
   background: transparent;
   border: 0;
   cursor: pointer;
 }
 
-#fullScreen:focus{
+.fullScreen:focus{
   outline: 0;
+}
+
+.volume{
+  position:relative;
+  cursor:pointer;
+  width: 10%;
+  height:20px;
+  float:left;
+  margin-top:10px;
+  margin-right:10px;
+  background-color:#000;
+}
+
+.volumeBar{
+  width: 10%;
+  display:block;
+  height:20px;
+  top:0;
+  left:0;
+  background-color:#888;
+  z-index:10;
 }
 
 @media(max-width: 800px) {
