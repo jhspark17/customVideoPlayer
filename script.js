@@ -56,7 +56,12 @@ function changeScreen(){
 video.addEventListener('click', toggleVideoStatus);
 video.addEventListener('ended', poster)
 play.addEventListener('click', toggleVideoStatus);
-
+window.addEventListener('keydown', (e) => {
+  if (e.keyCode === 32) toggleVideoStatus();
+  else if (e.keyCode === 70) changeScreen();
+  else if (e.keyCode === 83) stopVideo();
+  
+})
 video.addEventListener('pause', updatePlayIcon);
 video.addEventListener('play', updatePlayIcon);
 video.addEventListener('timeupdate', updateProgress);
