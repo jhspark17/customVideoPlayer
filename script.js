@@ -3,6 +3,7 @@ const play = document.getElementById('play');
 const stop = document.getElementById('stop');
 const progress = document.getElementById('progress');
 const timestamp = document.getElementById('timestamp');
+const fullScreen = document.getElementById('fullScreen');
 
 
 //Play/Pause Video
@@ -22,6 +23,8 @@ function updatePlayIcon() {
 //update progress & timestamp
 function updateProgress() {
   progress.value = (video.currentTime / video.duration) * 100
+  if (video.currentTime === video.duration) video.currentTime = 0;
+ 
   //Get minutes
   let mins = Math.floor(video.currentTime / 60);
   mins = mins < 10 ? "0" + mins : mins;
@@ -40,8 +43,18 @@ function stopVideo(){
   video.pause();
 }
 
+function poster(){
+  video.load()
+  progress.value = 0;
+}
+
+function changeScreen(){
+  video.webkitRequestFullscreen()
+}
+
 //Event Listeners
 video.addEventListener('click', toggleVideoStatus);
+video.addEventListener('ended', poster)
 play.addEventListener('click', toggleVideoStatus);
 
 video.addEventListener('pause', updatePlayIcon);
@@ -50,3 +63,6 @@ video.addEventListener('timeupdate', updateProgress);
 
 stop.addEventListener('click', stopVideo);
 progress.addEventListener('change', setVideoProgress)
+fullScreen.addEventListener('click', changeScreen);
+
+
